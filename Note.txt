@@ -1,0 +1,33 @@
+https://github.com/storybookjs/storybook/issues/13144
+
+C:\Temp\my-react17-app>npx sb init
+ • Detecting project type. ✓
+npm ERR! code EBADPLATFORM
+npm ERR! notsup Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin"} (current: {"os":"win32","arch":"x64"})
+npm ERR! notsup Valid OS:    darwin
+npm ERR! notsup Valid Arch:  undefined
+npm ERR! notsup Actual OS:   win32
+npm ERR! notsup Actual Arch: x64
+
+Need to manually run it:
+=====================================
+0 verbose cli [
+0 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+0 verbose cli   'C:\\Users\\Annie\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+0 verbose cli   'install',
+0 verbose cli   '--legacy-peer-deps',
+0 verbose cli   '-D',
+0 verbose cli   '@storybook/react@^6.2.5',
+0 verbose cli   '@storybook/addon-links@^6.2.5',
+0 verbose cli   '@storybook/addon-essentials@^6.2.5',
+0 verbose cli   '@storybook/addon-actions@^6.2.5',
+0 verbose cli   '@storybook/node-logger@^6.2.5',
+0 verbose cli   '@storybook/preset-create-react-app@^3.1.7'
+
+
+C:\Temp\my-react17-app>npm install @storybook/react -D --force
+C:\Temp\my-react17-app>npm install @storybook/addon-links -D --force
+C:\Temp\my-react17-app>npm install @storybook/addon-essentials -D --force
+C:\Temp\my-react17-app>npm install @storybook/addon-actions -D --force
+C:\Temp\my-react17-app>npm install @storybook/node-logger -D --force
+C:\Temp\my-react17-app>npm install @storybook/preset-create-react-app -D --force
