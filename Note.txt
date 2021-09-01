@@ -3,3 +3,4 @@ ahuang23@CMC02FC0ZCML85 my-react17-app % npm i --save-dev @types/styled-componen
 ahuang23@CMC02FC0ZCML85 my-react17-app % npm install --save downshift
 
 SearchBox.tsx: from https://github.com/downshift-js/downshift
+SearchBox2.tsx: from /Users/ahuang23/projects/temp/downshift-examples/src/downshift/ordered-examples/00-get-root-props-example.js
