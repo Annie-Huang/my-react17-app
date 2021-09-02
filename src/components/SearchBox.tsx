@@ -27,11 +27,16 @@ const SearchBox = () => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleInputChange = (newValue: string) => {
-    // console.log('In handleInputChange method, newValue=', newValue);
+    console.log('In handleInputChange method, newValue=', newValue);
     const newInputValue = newValue.replace(/\W/g, '');
     setInputValue(newInputValue);
     // console.log('In handleInputChange method, newInputValue=', newInputValue);
     return newInputValue;
+  };
+
+  const clearValue = () => {
+    console.log('clearValue is called');
+    setInputValue('');
   };
 
   // loadOptions={loadOptions}
@@ -39,6 +44,8 @@ const SearchBox = () => {
     <SearchBoxWrapper>
       inputValue: {inputValue}
       <AsyncSelect
+        isClearable
+        clearValue={clearValue}
         cacheOptions
         loadOptions={promiseOptions}
         defaultOptions
