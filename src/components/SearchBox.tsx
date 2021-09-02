@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import AsyncSelect from 'react-select/async';
-import { colourOptions } from './data';
+import { ColourOption, colourOptions } from './data';
 
 const filterColors = (inputValue: string) =>
   colourOptions.filter((colourOption) =>
@@ -16,6 +16,13 @@ const loadOptions = (inputValue: string, callback: any) => {
   }, 1000);
 };
 
+const promiseOptions = (inputValue: string) =>
+  new Promise<ColourOption[]>((resolve) => {
+    setTimeout(() => {
+      resolve(filterColors(inputValue));
+    }, 1000);
+  });
+
 const SearchBox = () => {
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -27,12 +34,13 @@ const SearchBox = () => {
     return newInputValue;
   };
 
+  // loadOptions={loadOptions}
   return (
     <SearchBoxWrapper>
       inputValue: {inputValue}
       <AsyncSelect
         cacheOptions
-        loadOptions={loadOptions}
+        loadOptions={promiseOptions}
         defaultOptions
         onInputChange={handleInputChange}
       />
