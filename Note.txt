@@ -4,6 +4,7 @@
 ahuang23@CMC02FC0ZCML85 my-react17-app % npm i --save react-select
 ahuang23@CMC02FC0ZCML85 my-react17-app % npm i --save-dev @types/react-select
 
-
+ahuang23@CMC02FC0ZCML85 my-react17-app % npm install --save styled-components
+ahuang23@CMC02FC0ZCML85 my-react17-app % npm i --save-dev @types/styled-components
 
 
