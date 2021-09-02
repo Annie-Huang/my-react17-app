@@ -8,3 +8,14 @@ ahuang23@CMC02FC0ZCML85 my-react17-app % npm install --save styled-components
 ahuang23@CMC02FC0ZCML85 my-react17-app % npm i --save-dev @types/styled-components
 
 
+<div class="react-select-container">
+  <div class="react-select__control">
+    <div class="react-select__value-container">...</div>
+    <div class="react-select__indicators">...</div>
+  </div>
+  <div class="react-select__menu">
+    <div class="react-select__menu-list">
+      <div class="react-select__option">...</div>
+    </div>
+  </div>
+</div>
