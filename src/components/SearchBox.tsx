@@ -42,6 +42,7 @@ const SearchBox = () => {
   // loadOptions={loadOptions}
   return (
     <SearchBoxWrapper>
+      SearchBox <br />
       inputValue: {inputValue}
       <AsyncSelect
         isClearable

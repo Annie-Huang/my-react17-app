@@ -18,6 +18,7 @@ const MyComponent = () => {
 
   return (
     <MyComponentWrapper>
+      MyComponent <br />
       selectedOption: {JSON.stringify(selectedOption)}
       <Select onChange={setSelectedOption} options={options} />
     </MyComponentWrapper>
