@@ -27,7 +27,7 @@ const MyComponent = () => {
 
 const MyComponentWrapper = styled.div`
   max-width: 400px;
-  margin: 100px 0 0 50px;
+  margin: 100px 0 200px 50px;
 `;
 
 export default MyComponent;
