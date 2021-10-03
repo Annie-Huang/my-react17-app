@@ -43,6 +43,8 @@ const DropdownCombobox = () => {
     // selectedItem(null);
   };
 
+  console.log('getToggleButtonProps=', { ...getToggleButtonProps() });
+
   return (
     <div>
       <label {...getLabelProps()}>Choose an element:</label>
