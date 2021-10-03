@@ -42,28 +42,6 @@ const SearchBox = () => {
           </div>
 
           <Menu {...getMenuProps()}>
-            {/*            {isOpen
-              ? items
-                  .filter(
-                    (item) => !inputValue || item.value.includes(inputValue)
-                  )
-                  .map((item, index) => (
-                    <li
-                      {...getItemProps({
-                        key: item.value,
-                        index,
-                        item,
-                        style: {
-                          backgroundColor:
-                            highlightedIndex === index ? 'lightgray' : 'white',
-                          fontWeight: selectedItem === item ? 'bold' : 'normal',
-                        },
-                      })}
-                    >
-                      {item.value}
-                    </li>
-                  ))
-              : null}*/}
             {isOpen
               ? items
                   .filter(
@@ -71,15 +49,12 @@ const SearchBox = () => {
                   )
                   .map((item, index) => (
                     <Item
+                      isHighlightedIndex={highlightedIndex === index}
+                      isSelectedItem={selectedItem === item}
                       {...getItemProps({
                         key: item.value,
                         index,
                         item,
-                        style: {
-                          backgroundColor:
-                            highlightedIndex === index ? 'lightgray' : 'white',
-                          fontWeight: selectedItem === item ? 'bold' : 'normal',
-                        },
                       })}
                     >
                       {item.value}
@@ -93,8 +68,14 @@ const SearchBox = () => {
   );
 };
 
-const Item = styled.li`
+const Item = styled.li<{
+  isHighlightedIndex: boolean;
+  isSelectedItem: boolean;
+}>`
   border: 1px solid red;
+  background-color: ${(props) =>
+    props.isHighlightedIndex ? 'lightgray' : 'white'}
+  font-weight: ${(props) => (props.isSelectedItem ? 'bold' : 'normal')}
 `;
 
 const Menu = styled.ul`
