@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCombobox } from 'downshift';
-import { comboboxStyles, items, menuStyles } from './shared';
+import { items } from './shared';
 import styled, { css } from 'styled-components';
 
 const DropdownCombobox = () => {
@@ -31,28 +31,22 @@ const DropdownCombobox = () => {
     },
   });
 
-  /*
-          <button
-          tabIndex={-1}
-          onClick={() => {
-            selectItem(null)
-          }}
-          aria-label="clear selection"
-        >
-          &#215;
-        </button>
-  */
-
   const onFocus = () => {
     if (!isOpen) {
       openMenu();
     }
   };
 
+  const onClearButtonClick = () => {
+    // selectItem(null)
+    reset();
+    // selectedItem(null);
+  };
+
   return (
     <div>
       <label {...getLabelProps()}>Choose an element:</label>
-      <Combobox style={comboboxStyles} {...getComboboxProps()}>
+      <Combobox {...getComboboxProps()}>
         <input
           {...getInputProps({
             onFocus,
@@ -60,11 +54,7 @@ const DropdownCombobox = () => {
         />
         <button
           tabIndex={-1}
-          onClick={() => {
-            // selectItem(null)
-            reset();
-            // selectedItem(null);
-          }}
+          onClick={onClearButtonClick}
           aria-label='clear selection'
         >
           &#215;
