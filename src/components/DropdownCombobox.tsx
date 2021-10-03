@@ -24,7 +24,7 @@ const DropdownCombobox = () => {
       setInputItems(
         items.filter((item) =>
           inputValue
-            ? item.toLowerCase().startsWith(inputValue.toLowerCase())
+            ? item.toLowerCase().includes(inputValue.toLowerCase())
             : false
         )
       );
@@ -42,17 +42,20 @@ const DropdownCombobox = () => {
           &#215;
         </button>
   */
+
+  const onFocus = () => {
+    if (!isOpen) {
+      openMenu();
+    }
+  };
+
   return (
     <div>
       <label {...getLabelProps()}>Choose an element:</label>
-      <div style={comboboxStyles} {...getComboboxProps()}>
+      <Combobox style={comboboxStyles} {...getComboboxProps()}>
         <input
           {...getInputProps({
-            onFocus: () => {
-              if (!isOpen) {
-                openMenu();
-              }
-            },
+            onFocus,
           })}
         />
         <button
@@ -73,7 +76,7 @@ const DropdownCombobox = () => {
         >
           &#8595;
         </button>
-      </div>
+      </Combobox>
       <Menu {...getMenuProps()}>
         {isOpen &&
           inputItems.map((item, index) => (
@@ -89,6 +92,11 @@ const DropdownCombobox = () => {
     </div>
   );
 };
+
+const Combobox = styled.div`
+  display: inline-block;
+  margin-left: 5px;
+`;
 
 const Menu = styled.ul`
   max-height: 600px;
