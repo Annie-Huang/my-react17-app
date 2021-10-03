@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useCombobox} from 'downshift';
 import {comboboxStyles, items, menuStyles} from './shared';
+import styled, {css} from 'styled-components';
 
 const DropdownCombobox = () => {
   const [inputItems, setInputItems] = useState(items)
@@ -14,8 +15,9 @@ const DropdownCombobox = () => {
     highlightedIndex,
     getItemProps,
     openMenu,
-    selectItem,
+    // selectItem,
     reset,
+    selectedItem
   } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
@@ -56,6 +58,7 @@ const DropdownCombobox = () => {
           onClick={() => {
             // selectItem(null)
             reset();
+            // selectedItem(null);
           }}
           aria-label="clear selection"
         >
@@ -69,24 +72,40 @@ const DropdownCombobox = () => {
           &#8595;
         </button>
       </div>
-      <ul {...getMenuProps()} style={menuStyles}>
+      <Menu {...getMenuProps()}>
         {isOpen &&
         inputItems.map((item, index) => (
-          <li
-            style={
-              highlightedIndex === index
-                ? {backgroundColor: '#bde4ff'}
-                : {}
-            }
+          <Item isHighlightedIndex={highlightedIndex === index}
             key={`${item}${index}`}
             {...getItemProps({item, index})}
           >
             {item}
-          </li>
+          </Item>
         ))}
-      </ul>
+      </Menu>
     </div>
   );
 };
 
+
+const Menu = styled.ul`
+  max-height: 600px;
+  max-width: 300px;
+  overflow-y: scroll;
+  background-color: #eee;
+  padding: 0;
+  list-style: none;
+  position: relative;
+`;
+
+const Item = styled.li<{
+  isHighlightedIndex: boolean
+}>`
+  ${props =>
+    props.isHighlightedIndex &&
+    css`
+      background-color: #bde4ff;
+    `}
+
+`;
 export default DropdownCombobox;
