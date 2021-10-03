@@ -41,7 +41,7 @@ const SearchBox = () => {
             <input {...getInputProps()} />
           </div>
 
-          <ResultList {...getMenuProps()}>
+          <Menu {...getMenuProps()}>
             {/*            {isOpen
               ? items
                   .filter(
@@ -64,36 +64,40 @@ const SearchBox = () => {
                     </li>
                   ))
               : null}*/}
-            {items
-              .filter((item) => !inputValue || item.value.includes(inputValue))
-              .map((item, index) => (
-                <ResultItem
-                  {...getItemProps({
-                    key: item.value,
-                    index,
-                    item,
-                    style: {
-                      backgroundColor:
-                        highlightedIndex === index ? 'lightgray' : 'white',
-                      fontWeight: selectedItem === item ? 'bold' : 'normal',
-                    },
-                  })}
-                >
-                  {item.value}
-                </ResultItem>
-              ))}
-          </ResultList>
+            {isOpen
+              ? items
+                  .filter(
+                    (item) => !inputValue || item.value.includes(inputValue)
+                  )
+                  .map((item, index) => (
+                    <Item
+                      {...getItemProps({
+                        key: item.value,
+                        index,
+                        item,
+                        style: {
+                          backgroundColor:
+                            highlightedIndex === index ? 'lightgray' : 'white',
+                          fontWeight: selectedItem === item ? 'bold' : 'normal',
+                        },
+                      })}
+                    >
+                      {item.value}
+                    </Item>
+                  ))
+              : null}
+          </Menu>
         </SearchBoxWrapper>
       )}
     </Downshift>
   );
 };
 
-const ResultItem = styled.li`
+const Item = styled.li`
   border: 1px solid red;
 `;
 
-const ResultList = styled.ul`
+const Menu = styled.ul`
   border: 1px solid black;
   display: flex;
   flex-direction: column;
