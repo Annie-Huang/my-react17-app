@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {useCombobox} from 'downshift';
-import {comboboxStyles, items, menuStyles} from './shared';
-import styled, {css} from 'styled-components';
+import React, { useState } from 'react';
+import { useCombobox } from 'downshift';
+import { comboboxStyles, items, menuStyles } from './shared';
+import styled, { css } from 'styled-components';
 
 const DropdownCombobox = () => {
-  const [inputItems, setInputItems] = useState(items)
+  const [inputItems, setInputItems] = useState(items);
   const {
     isOpen,
     getToggleButtonProps,
@@ -17,17 +17,19 @@ const DropdownCombobox = () => {
     openMenu,
     // selectItem,
     reset,
-    selectedItem
+    selectedItem,
   } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
-        items.filter(item =>
-          inputValue ? item.toLowerCase().startsWith(inputValue.toLowerCase()) : false,
-        ),
-      )
+        items.filter((item) =>
+          inputValue
+            ? item.toLowerCase().startsWith(inputValue.toLowerCase())
+            : false
+        )
+      );
     },
-  })
+  });
 
   /*
           <button
@@ -48,7 +50,7 @@ const DropdownCombobox = () => {
           {...getInputProps({
             onFocus: () => {
               if (!isOpen) {
-                openMenu()
+                openMenu();
               }
             },
           })}
@@ -60,33 +62,33 @@ const DropdownCombobox = () => {
             reset();
             // selectedItem(null);
           }}
-          aria-label="clear selection"
+          aria-label='clear selection'
         >
           &#215;
         </button>
         <button
-          type="button"
+          type='button'
           {...getToggleButtonProps()}
-          aria-label="toggle menu"
+          aria-label='toggle menu'
         >
           &#8595;
         </button>
       </div>
       <Menu {...getMenuProps()}>
         {isOpen &&
-        inputItems.map((item, index) => (
-          <Item isHighlightedIndex={highlightedIndex === index}
-            key={`${item}${index}`}
-            {...getItemProps({item, index})}
-          >
-            {item}
-          </Item>
-        ))}
+          inputItems.map((item, index) => (
+            <Item
+              isHighlightedIndex={highlightedIndex === index}
+              key={`${item}${index}`}
+              {...getItemProps({ item, index })}
+            >
+              {item}
+            </Item>
+          ))}
       </Menu>
     </div>
   );
 };
-
 
 const Menu = styled.ul`
   max-height: 600px;
@@ -99,13 +101,12 @@ const Menu = styled.ul`
 `;
 
 const Item = styled.li<{
-  isHighlightedIndex: boolean
+  isHighlightedIndex: boolean;
 }>`
-  ${props =>
+  ${(props) =>
     props.isHighlightedIndex &&
     css`
       background-color: #bde4ff;
     `}
-
 `;
 export default DropdownCombobox;
