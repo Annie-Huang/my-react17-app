@@ -1,8 +1,10 @@
 import React from 'react';
-import { css as emoCSS } from 'emotion';
-import styled from 'react-emotion';
+// import { css as emoCSS } from 'emotion';
+import { css as emoCSS } from '@emotion/css';
+// import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import starWarsNames from 'starwars-names';
-import matchSorter from 'match-sorter';
+import {matchSorter} from 'match-sorter';
 
 const allItems = starWarsNames.all.map((s) => ({
   name: s,

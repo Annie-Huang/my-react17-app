@@ -1,0 +1,100 @@
+https://www.downshift-js.com/use-combobox
+https://codesandbox.io/s/github/kentcdodds/downshift-examples?file=/src/hooks/useCombobox/basic-usage.js
+
+====================================================================
+PS C:\Temp\my-react17-app> npm install emotion
+PS C:\Temp\my-react17-app> npm i --save-dev @types/emotion
+PS C:\Temp\my-react17-app> npm install @emotion/css
+PS C:\Temp\my-react17-app> npm install @emotion/styled
+
+-----------------------------------------------------------
+
+Basic Usage
+
+    const [inputItems, setInputItems] = useState(items)
+    const {
+      isOpen,
+      getToggleButtonProps,
+      getLabelProps,
+      getMenuProps,
+      getInputProps,
+      getComboboxProps,
+      highlightedIndex,
+      getItemProps,
+    } = useCombobox({
+      items: inputItems,
+      onInputValueChange: ({ inputValue }) => {
+        setInputItems(
+          items.filter(item =>
+            item.toLowerCase().startsWith(inputValue.toLowerCase()),
+          ),
+        )
+      },
+    })
+
+
+Controlling state
+Controlling state is possible by receiving the state changes done by Downshift via onChange props (onHighlightedIndexChange, onSelectedItemChange, onStateChange etc.). You can then change them based on your requirements and pass them back to useCombobox as props, such as for instance highlightedIndex or selectedItem.
+
+The example below shows how to control selectedItem. Both comboboxes share the same selectedItem reference, and changing it in one of the dropdowns will update the value in the other one as well.
+
+    const [inputItems, setInputItems] = useState(items)
+    const {
+      isOpen,
+      getToggleButtonProps,
+      getLabelProps,
+      getMenuProps,
+      getInputProps,
+      getComboboxProps,
+      highlightedIndex,
+      getItemProps,
+    } = useCombobox({
+      items: inputItems,
+      selectedItem,
+      onSelectedItemChange: handleSelectedItemChange,
+      onInputValueChange: ({ inputValue }) => {
+        setInputItems(
+          items.filter(item =>
+            item.toLowerCase().startsWith(inputValue.toLowerCase()),
+          ),
+        )
+      },
+    })
+
+        <DropdownCombobox
+          selectedItem={selectedItem}
+          handleSelectedItemChange={handleSelectedItemChange}
+        />
+        <DropdownCombobox
+          selectedItem={selectedItem}
+          handleSelectedItemChange={handleSelectedItemChange}
+        />
+
+Using action props
+
+    const [inputItems, setInputItems] = useState(items)
+    const {
+      isOpen,
+      getToggleButtonProps,
+      getLabelProps,
+      getMenuProps,
+      getInputProps,
+      getComboboxProps,
+      highlightedIndex,
+      getItemProps,
+      openMenu,
+      selectItem,
+    } = useCombobox({
+      items: inputItems,
+      onInputValueChange: ({ inputValue }) => {
+        setInputItems(
+          items.filter(item =>
+            item.toLowerCase().startsWith(inputValue.toLowerCase()),
+          ),
+        )
+      },
+    })
+
+
+
+
