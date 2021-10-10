@@ -1,0 +1,3 @@
+Problem: Access child component from parent component without re-rendering and passing props or state;
+Solution: Ref forwarding is a technique for automatically passing a ref through a component to one of its children. This is typically not necessary for most component in the application.
+          However, it can be useful for some kinds of components, especially in reusable component libraries
