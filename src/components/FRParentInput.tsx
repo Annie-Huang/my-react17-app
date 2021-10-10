@@ -1,7 +1,7 @@
 import React from 'react';
 import FRInput from './FRInput';
 
-const FrParentInput = React.forwardRef<HTMLInputElement>((props, ref) => {
+const FRParentInput = React.forwardRef<HTMLInputElement>((props, ref) => {
   return (
     <div>
       <FRInput ref={ref} />
@@ -9,4 +9,4 @@ const FrParentInput = React.forwardRef<HTMLInputElement>((props, ref) => {
   );
 });
 
-export default FrParentInput;
+export default FRParentInput;

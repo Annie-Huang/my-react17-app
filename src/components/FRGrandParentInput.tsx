@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import FrParentInput from './FRParentInput';
+import FRParentInput from './FRParentInput';
 
 const FRGrandParentInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -12,7 +12,7 @@ const FRGrandParentInput = () => {
 
   return (
     <div>
-      <FrParentInput ref={inputRef} />
+      <FRParentInput ref={inputRef} />
       <button type='button' onClick={onButtonClicked}>
         Focus Input
       </button>
