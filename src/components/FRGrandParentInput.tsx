@@ -6,15 +6,13 @@ const FRGrandParentInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onButtonClicked = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    inputRef?.current?.focus();
   };
 
   return (
     <div>
-      {/*<FRParentInput ref={inputRef} />*/}
-      <FRInput ref={inputRef} />
+      <FRParentInput ref={inputRef} />
+      {/*<FRInput ref={inputRef} />*/}
       <button type='button' onClick={onButtonClicked}>
         Focus Input
       </button>
